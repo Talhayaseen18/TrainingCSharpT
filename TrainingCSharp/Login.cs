@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace TrainingCSharp
 {    
     [TestClass]
-    public class Login : Hooks   
+    public class Login : BaseClass   
     {
         protected IWait<IWebDriver> wait;
 
@@ -26,7 +26,7 @@ namespace TrainingCSharp
             driver.Navigate().GoToUrl(url);
             Assert.AreEqual(url, driver.Url, "URL Mismatch");
             Assert.AreEqual("Swag Labs", driver.Title);            
-            driver.FindElement(By.Id("user-name")).SendKeys(username);
+            driver.FindElement(By.Id("user-name")).SendKeys(userName);
             driver.FindElement(By.Id("password")).SendKeys("secret_sauce");
             driver.FindElement(By.Id("login-button")).Click();
             Assert.AreEqual("https://www.saucedemo.com/inventory.html", driver.Url,"Inventory URL Mismatch");

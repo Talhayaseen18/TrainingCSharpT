@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 [TestClass]
-public class Hooks
+public class BaseClass
 {    
     protected static IWebDriver driver;
 
