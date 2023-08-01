@@ -18,12 +18,10 @@ namespace TrainingCSharp
         }
 
         [TestMethod]
-        [Priority(1)]
         public void PostiveTest1()
         {
             string url = "https://www.saucedemo.com/";
             string userName = "standard_user";
-            driver.Navigate().GoToUrl(url);
             Assert.AreEqual(url, driver.Url, "URL Mismatch");
             Assert.AreEqual("Swag Labs", driver.Title);            
             driver.FindElement(By.Id("user-name")).SendKeys(userName);
@@ -33,10 +31,16 @@ namespace TrainingCSharp
             Console.WriteLine("Hello! Welcome to"+' '+driver.Url+' '+"You have logged in with username"+' '+userName);
         }
 
-        [TestMethod]
-        [Priority(2)]
+        [TestMethod]        
         public void PostiveTest2()
-        {          
+        {
+            string url = "https://www.saucedemo.com/";
+            string userName = "standard_user";
+            Assert.AreEqual(url, driver.Url, "URL Mismatch");
+            Assert.AreEqual("Swag Labs", driver.Title);
+            driver.FindElement(By.Id("user-name")).SendKeys(userName);
+            driver.FindElement(By.Id("password")).SendKeys("secret_sauce");
+            driver.FindElement(By.Id("login-button")).Click();
             Assert.AreEqual("Swag Labs", driver.Title);
             Assert.AreEqual("https://www.saucedemo.com/inventory.html", driver.Url, "Inventory URL Mismatch");
             driver.FindElement(By.Id("add-to-cart-sauce-labs-backpack")).Click();
@@ -49,7 +53,6 @@ namespace TrainingCSharp
         {
             string url = "https://www.saucedemo.com/";
             string userName = "performance_glitch_user";
-            driver.Navigate().GoToUrl(url);
             Assert.AreEqual(url, driver.Url, "URL Mismatch");
             Assert.AreEqual("Swag Labs", driver.Title);
             driver.FindElement(By.Id("user-name")).SendKeys(userName);
@@ -66,7 +69,6 @@ namespace TrainingCSharp
         public void NegativeTest1()
         {
             string url = "https://www.saucedemo.com/";
-            driver.Navigate().GoToUrl(url);
             Assert.AreEqual(url, driver.Url, "URL Mismatch");
             Assert.AreEqual("Swag Labs", driver.Title);
             driver.FindElement(By.Id("user-name")).SendKeys("locked_out_user");
@@ -81,7 +83,6 @@ namespace TrainingCSharp
         public void NegativeTest2()
         {
             string url = "https://www.saucedemo.com/";
-            driver.Navigate().GoToUrl(url);
             Assert.AreEqual(url, driver.Url, "URL Mismatch");
             Assert.AreEqual("Swag Labs", driver.Title);
             driver.FindElement(By.Id("user-name")).SendKeys("locked_out_user");
@@ -97,7 +98,6 @@ namespace TrainingCSharp
         public void NegativeTest3()
         {
             string url = "https://www.saucedemo.com/";
-            driver.Navigate().GoToUrl(url);
             Assert.AreEqual(url, driver.Url, "URL Mismatch");
             Assert.AreEqual("Swag Labs", driver.Title);
             driver.FindElement(By.Id("user-name")).SendKeys("locked_out_user");

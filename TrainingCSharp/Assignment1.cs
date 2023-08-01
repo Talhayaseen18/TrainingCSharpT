@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 namespace TrainingCSharp
 {
     [TestClass]
-    public class UnitTest1
+    public class Assignment1
     {
         [TestMethod]
         public void TestMethod1()
