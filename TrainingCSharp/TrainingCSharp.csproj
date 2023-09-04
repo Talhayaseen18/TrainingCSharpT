@@ -19,4 +19,10 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="115.0.5790.9800" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="EnviromentProperties\credentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

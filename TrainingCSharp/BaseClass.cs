@@ -2,24 +2,34 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using TrainingCSharp.DataObjects;
+using TrainingCSharp;
+using TrainingCSharp.Pages;
 
 [TestClass]
 public class BaseClass
 {    
     protected static IWebDriver driver;
+    LoginPage loginPage;
 
-    [AssemblyInitialize]
-    public static void AssemblyInitialize(TestContext context)
+    //[TestInitialize]
+    //public static void AssemblyInitialize(TestContext context)
+    //{
+    //    driver = new ChromeDriver();
+    //    driver.Manage().Window.Maximize();
+    //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+    //}
+    
+    [TestInitialize]
+    public void TestInitialize()
     {
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-    }
-    
-    [TestInitialize]
-    public void TestInitialize()
-    {   
-            driver.Navigate().GoToUrl("https://www.saucedemo.com/");               
+        Credentials credentials = CredentialHelper.ReadCredentials("EnviromentProperties\\credentials.json");        
+        driver.Navigate().GoToUrl(credentials.Url);              
+        loginPage = new LoginPage(driver);
+        loginPage.performLogin(credentials.Username, credentials.Password);
     }
 
     [AssemblyCleanup]

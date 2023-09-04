@@ -4,14 +4,14 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System.Xml.Linq;
 
-namespace TrainingCSharp
-{    
+namespace TrainingCSharp.Tests
+{
     [TestClass]
-    public class Login : BaseClass   
+    public class Login : BaseClass
     {
         protected IWait<IWebDriver> wait;
 
-        public void AcceptAlert() 
+        public void AcceptAlert()
         {
             wait.Until(ExpectedConditions.AlertIsPresent());
             driver.SwitchTo().Alert().Accept();
@@ -20,18 +20,12 @@ namespace TrainingCSharp
         [TestMethod]
         public void PostiveTest1()
         {
-            string url = "https://www.saucedemo.com/";
             string userName = "standard_user";
-            Assert.AreEqual(url, driver.Url, "URL Mismatch");
-            Assert.AreEqual("Swag Labs", driver.Title);            
-            driver.FindElement(By.Id("user-name")).SendKeys(userName);
-            driver.FindElement(By.Id("password")).SendKeys("secret_sauce");
-            driver.FindElement(By.Id("login-button")).Click();
-            Assert.AreEqual("https://www.saucedemo.com/inventory.html", driver.Url,"Inventory URL Mismatch");
-            Console.WriteLine("Hello! Welcome to"+' '+driver.Url+' '+"You have logged in with username"+' '+userName);
+            Assert.AreEqual("https://www.saucedemo.com/inventory.html", driver.Url, "Inventory URL Mismatch");
+            Console.WriteLine("Hello! Welcome to" + ' ' + driver.Url + ' ' + "You have logged in with username" + ' ' + userName);
         }
 
-        [TestMethod]        
+        [TestMethod]
         public void PostiveTest2()
         {
             string url = "https://www.saucedemo.com/";
@@ -105,7 +99,7 @@ namespace TrainingCSharp
             IWebElement lockErrorElement = driver.FindElement(By.XPath("//div[contains(@class,'error-message-container error')]/h3"));
             string lockError = lockErrorElement.Text;
             Assert.AreEqual("Epic sadface: Password is required", lockError, "Error Mismatch");
-        }        
+        }
     }
 }
 
